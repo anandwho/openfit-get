@@ -1,0 +1,9 @@
+{
+  "versionCode": 77,
+  "versionName": "2.1.6",
+  "apkUrl": "https://anandwho.github.io/openfit-get/openfit.apk",
+  "sizeBytes": 26607845,
+  "sha256": "df1efbeb42479ad6eaedc36f3ea12d4d9b74bc91d55d3842fb59df2c7e90288a",
+  "notes": "2026-09-19\n Fixed\n- Start Walk or Journey once. Walking hops and bus / auto / train stretches are both kept. You do not start and stop each change.\n- Journey recordings now count steps, walk distance, walk time and walk calories. Vehicle distance stays on Travel.\n- Walk recordings no longer throw away cab / bus GPS as a \"too fast\" glitch.\n- Today / training totals use walking metres, not the whole commute.",
+  "releasedAt": "2026-09-19"
+}
