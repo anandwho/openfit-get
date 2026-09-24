@@ -1,0 +1,9 @@
+{
+  "versionCode": 79,
+  "versionName": "2.2.0",
+  "apkUrl": "https://anandwho.github.io/openfit-get/openfit.apk",
+  "sizeBytes": 15611269,
+  "sha256": "80381c5c8bb4ac443a1795b895c2ba0341cedd6add2eb167247793021cf92038",
+  "notes": "2026-09-24\n Battery and background\n- Background wake-ups no longer reschedule every job. The app cold-starts in the background many times a day (motion alarm, activity broadcasts, jobs); each start used to re-enqueue all periodic work, add a battery job and push back the walk-confirmation alarm. Now it only fills in what is missing, and refreshes schedules once per app version.\n- Fixed a Play Services leak that could keep 30-second activity samples running after the app process died.\n- Activity-transition registration happens at most once per process / 6 hours instead of on every motion tick.\n- Idle ticks reuse a step-counter read from the last 3 s instead of holding the CPU awake 1.2 s for a second read.",
+  "releasedAt": "2026-09-24"
+}

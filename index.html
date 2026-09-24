@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Install OpenFit</title>
+  <meta name="description" content="Download the latest OpenFit APK for Android. Private fitness, steps, sleep and phone-use tracking." />
+  <link rel="icon" type="image/svg+xml" href="openfit-mark.svg" />
+  <link rel="icon" type="image/png" href="openfit-icon.png" />
+  <link rel="apple-touch-icon" href="openfit-icon.png" />
+  <meta name="theme-color" content="#0E1114" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F6F3EF" media="(prefers-color-scheme: light)" />
+  <style>
+    :root { --bg:#0E1114; --card:#161A1F; --text:#F4EDE6; --muted:#A3ACB6; --accent:#FF6B4A; --on-accent:#2A0C06; --line:#2C343D; }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#F6F3EF; --card:#FFFFFF; --text:#1A1D21; --muted:#5A636D; --accent:#E5522F; --on-accent:#FFFFFF; --line:#E3DDD6; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+      font-family: -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      padding: max(28px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
+    }
+    main { width: min(440px, 100%); }
+    .mark { width: 80px; height: 80px; border-radius: 20px; display: block; margin-bottom: 20px; }
+    h1 { font-size: 30px; letter-spacing: -0.6px; margin: 0 0 8px; }
+    h2 { font-size: 15px; margin: 0 0 6px; }
+    p { color: var(--muted); line-height: 1.5; margin: 0 0 14px; font-size: 15px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin: 16px 0; }
+    a.btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px;
+      background: var(--accent); color: var(--on-accent);
+      font-weight: 700; text-decoration: none; border-radius: 14px; padding: 14px 18px; font-size: 16px;
+    }
+    a.btn:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+    .meta { font-size: 13px; color: var(--muted); text-align: center; margin-top: 10px; min-height: 18px; }
+    ol { margin: 6px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .ver { font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+    #notes { white-space: pre-line; font-size: 14px; color: var(--muted); line-height: 1.55; max-height: 220px; overflow: auto; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="mark" src="openfit-mark.svg" alt="" width="80" height="80" />
+    <div class="ver" id="ver">Latest version</div>
+    <h1>Install OpenFit</h1>
+    <p>Walks, steps, sleep and phone use, tracked on your phone. Your data stays on the device and in your own cloud.</p>
+    <a class="btn" href="openfit.apk" id="dl" download>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download for Android
+    </a>
+    <div class="meta" id="meta"></div>
+
+    <div class="card">
+      <h2>Installing</h2>
+      <ol>
+        <li>Tap Download, then open the file from the notification.</li>
+        <li>If Android asks, allow your browser to install unknown apps (Settings → Apps → Special app access → Install unknown apps).</li>
+        <li>Already have OpenFit? Install over it. Don't uninstall first — your data stays.</li>
+      </ol>
+    </div>
+
+    <div class="card" id="whatsnew" hidden>
+      <h2>What's new</h2>
+      <div id="notes"></div>
+    </div>
+
+    <p>Once installed, You → Check for update pulls new versions from this page.</p>
+  </main>
+  <script>
+    fetch("update.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (u) {
+      if (!u) return;
+      var ver = document.getElementById("ver");
+      if (ver && u.versionName) ver.textContent = "Version " + u.versionName + (u.releasedAt ? " · " + u.releasedAt : "");
+      var a = document.getElementById("dl");
+      if (a && u.apkUrl) a.href = u.apkUrl;
+      var meta = document.getElementById("meta");
+      if (meta && u.sizeBytes) meta.textContent = (u.sizeBytes / 1048576).toFixed(1) + " MB · Android 8.0 or newer";
+      if (u.notes) {
+        document.getElementById("notes").textContent = String(u.notes).trim();
+        document.getElementById("whatsnew").hidden = false;
+      }
+    }).catch(function () {});
+  </script>
+</body>
+</html>
