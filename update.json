@@ -1,0 +1,9 @@
+{
+  "versionCode": 80,
+  "versionName": "2.2.1",
+  "apkUrl": "https://anandwho.github.io/openfit-get/openfit.apk",
+  "sizeBytes": 15611269,
+  "sha256": "311f4d4d9e41162473a628a33dc48d51a05a83e53a9b67331009d7d87426ff30",
+  "notes": "2026-09-30\n Accuracy\n- Walking GPS at the default 1-second interval is credited again. The old 4 m noise floor needed a 14 km/h hop; it now scales with the interval (1 m at 1 s, 4 m at 4 s).\n- Existing 0 km walks that still have a GPS track are repaired on the phone from those points. Nothing is deleted, and a row that already has distance is never shrunk. The pass walks by id in the background of one launch (not one page per cold start), so a short unrepairable track cannot stall the app.\n- Parked vehicle GPS (crawl speed, tiny hops) is not journey distance.\n- Resting heart rate uses yesterday when today is missing, and never compares a day to itself. Non-numbers and ≤20 bpm are ignored.",
+  "releasedAt": "2026-09-30"
+}
