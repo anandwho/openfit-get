@@ -1,0 +1,9 @@
+{
+  "versionCode": 84,
+  "versionName": "2.4.1",
+  "apkUrl": "https://anandwho.github.io/openfit-get/openfit-2.4.1.apk",
+  "sizeBytes": 15627657,
+  "sha256": "c7c8fe5b89d2982202a2e041ddae215662c12d525dcb3c3c3a8340983edc8abc",
+  "notes": "2026-10-19\n- The Home title follows the period you pick. Today stays Today. Seven and thirty days show that range instead of leaving the heading on Today.\n- Today's step count can be set by hand, including a lower number. The correction is marked, so sync does not restore an older higher cloud total. New steps from the phone still add on top. An ordinary import still cannot lower a day.\n- Finishing a recording waits up to ten seconds. If the save is still running, the phone says so instead of returning to Track with no explanation.\n- The web map banner clears when the map style is ready. The step-goal control no longer draws a dashed line through the progress bar, and phone screens keep the last card above the bottom bar.\n- No database migration. Existing activities and steps stay.",
+  "releasedAt": "2026-10-19"
+}
